@@ -11,10 +11,10 @@ use App\State;
 
 class BuildingController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Display a listing of the resource.
@@ -23,7 +23,7 @@ class BuildingController extends Controller
      */
     public function index()
     {
-        $buildings = Building::get();
+        $buildings = Building::paginate(5);
 
         $data = compact('buildings');
 
@@ -141,6 +141,10 @@ class BuildingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $building = Building::find($id);
+        
+        $building->delete();
+
+        return redirect(route('dashboard'))->with('success', 'Building removed!');
     }
 }

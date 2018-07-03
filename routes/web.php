@@ -11,7 +11,7 @@
 |
 */
 
-Route::middleware('auth')->group(function () {
+// Route::middleware('auth')->group(function () {
 
 	Route::get('', 'BuildingController@index')->name('dashboard');
 
@@ -20,7 +20,10 @@ Route::middleware('auth')->group(function () {
 	Route::post('save', 'BuildingController@store')->name('save');
 	Route::get('edit/{id}', 'BuildingController@edit')->name('edit');
 	Route::post('update/{id}', 'BuildingController@update')->name('update');
+	Route::delete('delete/{id}', 'BuildingController@destroy')->name('delete');
 
-});
+	// Route::resource('building', 'BuildingController');
 
-Auth::routes();
+// });
+
+// Auth::routes();

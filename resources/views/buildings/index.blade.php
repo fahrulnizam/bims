@@ -44,13 +44,26 @@
 								<td>{{ \App\Building_Group::where('id', $building->building_group)->first()->name }}</td>
 								<td>{{ $building->name }}</td>
 								<td>{{ status($building->status) }}</td>
-								<td><button id="{{ $building->id }}" type="button" class="btn btn-link editbuilding" data-toggle="modal" data-target="#editModal">Edit</button><button id="{{ $building->id }}" type="button" class="btn btn-link buildinginfo" data-toggle="modal" data-target="#detailsModal">Delete</button></td>
+								<td><button id="{{ $building->id }}" type="button" class="btn btn-link editbuilding" data-toggle="modal" data-target="#editModal">Edit</button>
+
+								<form id="del-form" method="POST" action="{{ route('delete', $building->id) }}">
+									{{ csrf_field() }}
+									<input type="hidden" name="_method" value="DELETE">
+									<button type="submit" class="btn btn-link">Delete</button>
+								</form></td>
 							</tr>		
 						@endforeach					
 						</tbody>
 					</table>
+
+					{{ $buildings->links() }}
+
 					</div>		
 					
+					@else
+
+					<div>No building record.</div>
+
 					@endif
 
 					<button type="button" class="btn btn-success pull-right addmodal" data-toggle="modal" data-target="#addModal" >Add New Building</button>
