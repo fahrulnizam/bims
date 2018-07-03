@@ -18,7 +18,7 @@ class CreateBuildingsTable extends Migration
             $table->string('building_id')->unique();
             $table->string('service_number')->unique();
             $table->integer('building_group')->unsigned();
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->text('description')->nullable();
             $table->integer('status')->unsigned();
             $table->integer('state')->unsigned();

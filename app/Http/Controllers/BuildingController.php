@@ -11,6 +11,11 @@ use App\State;
 
 class BuildingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -33,7 +38,9 @@ class BuildingController extends Controller
      */
     public function create()
     {
-        //
+        //$data = compact('buildings');
+
+        return view('buildings.add');
     }
 
     /**
@@ -44,49 +51,22 @@ class BuildingController extends Controller
      */
     public function store(Request $request)
     {
+
+        //dd($request);
+
         $building = new Building;
 
-        $user->name = $request->name;
-        $user->ic_no = $request->ic_no;
-        $user->password = bcrypt($request->password);
-        $user->email = $request->email;
+        $building->building_id = $request->building_id;
+        $building->service_number = $request->service_number;
+        $building->building_group = $request->building_group;
+        $building->name = $request->building_name;
+        $building->description = $request->description;
+        $building->status = $request->status;
+        $building->state = $request->state;
 
-        $user->mobile_no = $request->handphone;
-        //$user->address = NULL;
-        $user->jawatan = $request->jawatan;
+        $building->save();
 
-        $user->role_id = $request->user_level;
-
-        $user->no_ahli = $request->no_ahli;
-
-        $user->alamat = $request->alamat;
-
-        $user->negeri_id = $request->negeri;
-        $user->parlimen_id = $request->parlimen;
-        $user->dun_id = $request->dun;
-        $user->dm_id = $request->dm;
-
-        // created by
-        $user->created = Auth::user()->ic_no;
-
-        // if ($request->user_level == 3)
-        //     $role_data_id = $request->negeri;
-        // elseif ($request->user_level == 4) 
-        //     $role_data_id = $request->parlimen;
-        // elseif ($request->user_level == 5) 
-        //     $role_data_id = $request->dun;
-        // elseif ($request->user_level == 6) 
-        //     $role_data_id = $request->dm;
-        // else 
-        //     $role_data_id = 0; 
-
-        //$user->role_data_id = $role_data_id;
-
-        $user->save();
-
-        $user->permissions()->sync($request->permissions);
-
-        return redirect(route('users.index'))->with('success', 'New user created!');
+        return redirect(route('dashboard'))->with('success', 'New building added!');
     }
 
     /**
@@ -117,7 +97,13 @@ class BuildingController extends Controller
      */
     public function edit($id)
     {
-        //
+        $building = Building::find($id);
+
+        $data = compact('building');
+
+        //dd($building);
+
+        return view('buildings.edit', $data);
     }
 
     /**
@@ -129,7 +115,22 @@ class BuildingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        //dd($request);
+
+        $building = Building::find($id);
+
+        // $building->building_id = $request->building_id;
+        // $building->service_number = $request->service_number;
+        $building->building_group = $request->building_group;
+        $building->name = $request->building_name;
+        $building->description = $request->description;
+        $building->status = $request->status;
+        $building->state = $request->state;
+
+        $building->save();
+
+        return redirect(route('dashboard'))->with('success', 'Building updated!');
     }
 
     /**
