@@ -56,17 +56,17 @@
 						</tbody>
 					</table>
 
-					{{ $buildings->links() }}
-
 					</div>		
-					
+					{{ $buildings->links() }}
 					@else
 
 					<div>No building record.</div>
 
 					@endif
-
-					<button type="button" class="btn btn-success pull-right addmodal" data-toggle="modal" data-target="#addModal" >Add New Building</button>
+					
+					<div>
+						<button type="button" class="btn btn-success pull-right addmodal" data-toggle="modal" data-target="#addModal" >Add New Building</button>
+					</div>
 
 				  <!-- details Modal -->
 				  <div class="modal fade" id="detailsModal" role="dialog">

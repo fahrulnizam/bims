@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call(StateTableSeeder::class);
         $this->call(BuildingGroupTableSeeder::class);
 
-        factory(App\Building::class,20)->create();
+        factory(App\Building::class,10)->create();
 
     }
 }

@@ -11,19 +11,12 @@
 |
 */
 
-// Route::middleware('auth')->group(function () {
+Route::get('', 'BuildingController@index')->name('dashboard');
 
-	Route::get('', 'BuildingController@index')->name('dashboard');
+Route::get('details/{id}', 'BuildingController@show')->name('details');
+Route::get('add', 'BuildingController@create')->name('add');
+Route::post('save', 'BuildingController@store')->name('save');
+Route::get('edit/{id}', 'BuildingController@edit')->name('edit');
+Route::post('update/{id}', 'BuildingController@update')->name('update');
+Route::delete('delete/{id}', 'BuildingController@destroy')->name('delete');
 
-	Route::get('details/{id}', 'BuildingController@show')->name('details');
-	Route::get('add', 'BuildingController@create')->name('add');
-	Route::post('save', 'BuildingController@store')->name('save');
-	Route::get('edit/{id}', 'BuildingController@edit')->name('edit');
-	Route::post('update/{id}', 'BuildingController@update')->name('update');
-	Route::delete('delete/{id}', 'BuildingController@destroy')->name('delete');
-
-	// Route::resource('building', 'BuildingController');
-
-// });
-
-// Auth::routes();
