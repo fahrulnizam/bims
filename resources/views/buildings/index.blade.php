@@ -41,7 +41,8 @@
 							<tr>
 								<td><button id="{{ $building->id }}" type="button" class="btn btn-link buildinginfo" data-toggle="modal" data-target="#detailsModal">{{ $building->building_id }}</button></td>
 								<td>{{ $building->service_number }}</td>
-								<td>{{ \App\Building_Group::where('id', $building->building_group)->first()->name }}</td>
+								{{--  <td>{{ \App\Building_Group::where('id', $building->building_group)->first()->name }}</td>  --}}
+								<td>{{ $building->get_building_group->name }}</td>
 								<td>{{ $building->name }}</td>
 								<td>{{ status($building->status) }}</td>
 								<td><button id="{{ $building->id }}" type="button" class="btn btn-link editbuilding" data-toggle="modal" data-target="#editModal">Edit</button>

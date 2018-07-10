@@ -19,7 +19,7 @@
 							  <div class="form-group">
 							    <label class="control-label col-sm-2" for="building_group">Building Group</label>
 							    <div class="col-sm-10">
-							      <p class="form-control-static">{{ \App\Building_Group::where('id', $building->building_group)->first()->name }}</p>
+							      <p class="form-control-static">{{ $building->get_building_group->name }}</p>
 							      {{-- <input type="building_group" class="form-control" id="building_group" value=""> --}}
 							    </div>
 							  </div>
@@ -47,7 +47,7 @@
 							  <div class="form-group">
 							    <label class="control-label col-sm-2" for="state">State</label>
 							    <div class="col-sm-10">
-							    	<p class="form-control-static">{{ \App\State::where('id', $building->state)->first()->name  }}</p>
+							    	<p class="form-control-static">{{ $building->get_state->name  }}</p>
 							    </div>
 							  </div>
 
