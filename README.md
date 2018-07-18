@@ -11,5 +11,5 @@ A simple CRUD web application developed with Laravel
 5. ```php artisan migrate --seed```
 6. If you are using XAMPP, visit ```localhost/bims/public/``` in your browser OR ```php artisan serve``` and visit ```http://127.0.0.1:8000```
 
-## Database Structure
-![](bims-db-structure.jpg)
+## Database Schema
+![](bims-db-schema.jpg)
